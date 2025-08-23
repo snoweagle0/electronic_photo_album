@@ -1,6 +1,13 @@
 #ifndef _IMAGE_H_
 #define _IMAGE_H_
 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <dirent.h>
+#include <sys/types.h>
+
 typedef struct {
     int width;
     int height;

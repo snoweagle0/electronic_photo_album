@@ -1,10 +1,5 @@
 #include "lcd.h"
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/mman.h>
-#include <unistd.h>
+
 
 struct fb_var_screeninfo var;
 struct fb_fix_screeninfo fix;

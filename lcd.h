@@ -1,7 +1,19 @@
 #ifndef _LCD_H_
 #define _LCD_H_
 
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+#ifdef __linux__
+#include <sys/mman.h>
 #include <linux/fb.h>
+
+
+#endif
+
 
 extern struct fb_var_screeninfo var;
 extern struct fb_fix_screeninfo fix;

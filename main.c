@@ -1,11 +1,21 @@
 #include "lcd.h"
 #include "image.h"
+#include "touch.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <assert.h>
+#include <pthread.h>
 
 int main()
 {
+    int input_fd=ev_open();
+    if(input_fd==-1)
+    {
+        return 0;
+    }
+    pthread_t tid;
+    int res= pthread_create(&tid,NULL,ev_test,input_fd);
     int lcd_fd = lcd_init();
     if (lcd_fd == -1)
     {
