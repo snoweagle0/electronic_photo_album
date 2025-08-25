@@ -16,7 +16,7 @@ int ev_open()
     return input_fd;
 }
 
-void ev_test(int input_fd)
+void ev_test(int input_fd,int *current_image)
 {
     int bx, by; // 触摸起始点
     int ex, ey; // 触摸中止点
@@ -49,18 +49,18 @@ void ev_test(int input_fd)
                     if (abs(dx) > abs(dy)) {
                         if (dx > 0) {
                             printf("Slide Right\n");
-                            screen_slide_right();
+                            //screen_slide_right();
                         } else {
                             printf("Slide Left\n");
-                            screen_slide_left();
+                           // screen_slide_left();
                         }
                     } else {
                         if (dy > 0) {
                             printf("Slide Down\n");
-                            screen_slide_down();
+                           // screen_slide_down();
                         } else {
                             printf("Slide Up\n");
-                            screen_slide_up();
+                           // screen_slide_up();
                         }
                     }
                 }
@@ -101,23 +101,27 @@ void screen_click()
     return;
 }
 
-void screen_slide_up()
+void screen_slide_up(int *current_image)
 {
     printf("slide up\n");
+    (*current_image)++;
     return;
 }
-void screen_slide_down()
+void screen_slide_down(int *current_image)
 {
     printf("slide down\n");
+    (*current_image)--;
     return;
 }
-void screen_slide_left()
+void screen_slide_left(int *current_image)
 {
     printf("slide left\n");
+    (*current_image)--;
     return;
 }
-void screen_slide_right()
+void screen_slide_right(int *current_image)
 {
     printf("slide right\n");
+    (*current_image)++;
     return;
 }

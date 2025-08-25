@@ -36,12 +36,12 @@ struct input_event
 #endif
 struct input_event ev;
 void input_close(int input_fd);
-void ev_test(int input_fd);
+void ev_test(int input_fd,int *current_image);
 int ev_open();
 void screen_click();
-void screen_slide_up();
-void screen_slide_down();
-void screen_slide_left();
-void screen_slide_right();
+void screen_slide_up(int *current_image);
+void screen_slide_down(int *current_image);
+void screen_slide_left(int *current_image);
+void screen_slide_right(int *current_image);
 
 #endif
