@@ -185,7 +185,8 @@ void image_display(Image *img, int *plcd, int xres, int yres, int line_length)
 
     // 清空屏幕
     memset(plcd, 0, xres * yres * 4);
-
+    int *timage=(int *)malloc(xres * yres * 4);
+    memset(timage, 0, xres * yres * 4);
     // 显示图片
     for (int y = 0; y < display_img->height; y++) {
         for (int x = 0; x < display_img->width; x++) {
@@ -194,10 +195,11 @@ void image_display(Image *img, int *plcd, int xres, int yres, int line_length)
             unsigned char g = display_img->data[src_index + 1];
             unsigned char r = display_img->data[src_index + 2];
             int color = (r << 16) | (g << 8) | b;
-            plcd[(start_y + y) * (line_length / 4) + (start_x + x)] = color;
+            timage[(start_y + y) * (line_length / 4) + (start_x + x)] = color;
         }
     }
-
+    memcpy(plcd,timage,xres * yres * 4);
+    free(timage);
     // 释放缩放后的图片内存
     if (scaled_img) {
         image_free(scaled_img);
